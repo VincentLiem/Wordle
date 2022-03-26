@@ -11,7 +11,7 @@ answer = random.choice(world_list)
 print(answer) #for testing
 in_word = []
 not_in_word = []
-correct_letter = ['','','','','']
+correct_letter = ['_','_','_','_','_']
 
 def Check_answer(x):
     return x == answer
@@ -27,14 +27,19 @@ def Check_correct_positions(x):
             not_in_word.append(letter)
         position += 1
  
-
 def Check_valid_answer(x):
-    return x == world_list
+    return x in world_list
 
 win = False
 guess_count = 1
 while guess_count <= 6 and win == False:
-    guess = input('Enter guess #'+ str(guess_count) + ' >> ')
+    valid_answer = False
+    while valid_answer == False:
+        guess = input('Enter guess #'+ str(guess_count) + ' >> ')
+        if Check_answer(guess):
+            valid_answer = True
+        else:
+            print('Invalid answer. Guess again.')
     if Check_answer(guess):
         win = True
     else:
