@@ -34,7 +34,7 @@ def Check_valid_answer(x):
 Win = False
 guess_count = 1
 while guess_count <= 6 and Win == False:
-    Guess = input('Enter guess # '+ guess_count + ' >> ')
+    Guess = input('Enter guess #'+ str(guess_count) + ' >> ')
     if Check_answer(Guess) == True:
         Win = True
     else:
