@@ -7,6 +7,11 @@ with open('wordle-allowed-guesses.txt') as file:
         line = line.replace('\n', '')
         word_list.append(line)
 file.close()
+with open('wordle-answers-alphabetical.txt') as file:
+    for line in file:
+        line = line.replace('\n', '')
+        word_list.append(line)
+file.close()
 answer = random.choice(word_list)
 in_word = []
 not_in_word = []
@@ -25,15 +30,13 @@ def Check_correct_positions(x):
         if letter not in answer:
             not_in_word.append(letter)
         position += 1
-        Check_duplicate_letters(in_word)
-        Check_duplicate_letters(not_in_word)
 
 def Check_duplicate_letters(x):
     check_dup = []
     for letter in x:
             if letter not in check_dup:
                 check_dup.append(letter)
-    x = check_dup
+    return check_dup
 
 def Check_valid_guess(x):
     return x in word_list
@@ -52,6 +55,8 @@ while guess_count <= 6 and win == False:
         win = True
     else:
         Check_correct_positions(guess)
+        in_word = Check_duplicate_letters(in_word)
+        not_in_word = Check_duplicate_letters(not_in_word)
     print('Correct letters so far:' + str(correct_letter))
     print('Letters in word:' + str(in_word))
     print('Letters not in word:' + str(not_in_word))
