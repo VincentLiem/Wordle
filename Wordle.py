@@ -9,9 +9,9 @@ file.close()
 
 answer = random.choice(world_list)
 
-in_word = ''
-not_in_word = ''
-correct_letter = '_____'
+in_word = []
+not_in_word = []
+correct_letter = []
 
 def Check_answer(x):
     return x == answer
@@ -26,22 +26,24 @@ def Check_correct_positions(x):
         if letter not in answer:
             not_in_word.append(letter)
         position += 1
+ 
 
 def Check_valid_answer(x):
     return x == world_list
 
-win = False
-guess_count = 0
-while guess_count <= 6 and Win is False:
-    Guess = input('Enter first guess >> ')
-    if Check_answer(Guess) is True:
-        win = True
+Win = False
+guess_count = 1
+while guess_count <= 6 and Win == False:
+    Guess = input('Enter guess # '+ guess_count + ' >> ')
+    if Check_answer(Guess) == True:
+        Win = True
     else:
         Check_correct_positions(Guess)
-    print('Correct letters so far:' + correct_letter)
-    print('Letters in word:' + in_word)
-    guess_count += 1
+    print('Correct letters so far:' + str(correct_letter))
+    print('Letters in word:' + str(in_word))
+    print('Letters not in word:' + str(not_in_word))
+    guess_count +=1
 if win == True:
-    print('You win.')
+    print ('You win.')
 else:
-    print('You Lose. Answer was ' + answer + '.')
+    print ('You Lose. Answer was ' + answer + '.')
