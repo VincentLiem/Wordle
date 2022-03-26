@@ -4,11 +4,11 @@ word_list = []
 
 with open('wordle-allowed-guesses.txt') as file:
     for line in file:
+        line = line.replace('\n', '')
         word_list.append(line)
 file.close()
 
 answer = random.choice(word_list)
-print(answer) #for testing
 in_word = []
 not_in_word = []
 correct_letter = ['_','_','_','_','_']
