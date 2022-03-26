@@ -16,7 +16,6 @@ answer = random.choice(word_list)
 in_word = []
 not_in_word = []
 correct_letter = ['_','_','_','_','_']
-print(answer) #for testing
 def Check_answer(x):
     return x == answer
 
