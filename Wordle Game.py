@@ -12,10 +12,12 @@ with open('wordle-answers-alphabetical.txt') as file:
         line = line.replace('\n', '')
         word_list.append(line)
 file.close()
+
 answer = random.choice(word_list)
 in_word = []
 not_in_word = []
 correct_letter = ['_','_','_','_','_']
+
 def Check_answer(x):
     return x == answer
 
