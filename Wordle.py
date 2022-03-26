@@ -16,7 +16,7 @@ answer = random.choice(word_list)
 in_word = []
 not_in_word = []
 correct_letter = ['_','_','_','_','_']
-
+print(answer) #for testing
 def Check_answer(x):
     return x == answer
 
@@ -57,11 +57,11 @@ while guess_count <= 6 and win == False:
         Check_correct_positions(guess)
         in_word = Check_duplicate_letters(in_word)
         not_in_word = Check_duplicate_letters(not_in_word)
-    print('Correct letters so far:' + str(correct_letter))
-    print('Letters in word:' + str(in_word))
-    print('Letters not in word:' + str(not_in_word))
+        print('Correct letters so far:' + str(correct_letter))
+        print('Letters in word:' + str(in_word))
+        print('Letters not in word:' + str(not_in_word))
     guess_count += 1
 if win == True:
-    print ('You win.')
+    print ('You win. Answer was ' + answer + '.')
 else:
-    print ('You Lose. Answer was ' + answer + '.')
+    print ('You lose. Answer was ' + answer + '.')
