@@ -8,10 +8,10 @@ with open('wordle-allowed-guesses.txt') as file:
 file.close()
 
 answer = random.choice(world_list)
-
+print(answer) #for testing
 in_word = []
 not_in_word = []
-correct_letter = []
+correct_letter = ['','','','','']
 
 def Check_answer(x):
     return x == answer
@@ -31,14 +31,14 @@ def Check_correct_positions(x):
 def Check_valid_answer(x):
     return x == world_list
 
-Win = False
+win = False
 guess_count = 1
-while guess_count <= 6 and Win == False:
-    Guess = input('Enter guess #'+ str(guess_count) + ' >> ')
-    if Check_answer(Guess) == True:
-        Win = True
+while guess_count <= 6 and win == False:
+    guess = input('Enter guess #'+ str(guess_count) + ' >> ')
+    if Check_answer(guess):
+        win = True
     else:
-        Check_correct_positions(Guess)
+        Check_correct_positions(guess)
     print('Correct letters so far:' + str(correct_letter))
     print('Letters in word:' + str(in_word))
     print('Letters not in word:' + str(not_in_word))
