@@ -53,7 +53,7 @@ while play_again == True:
             if Check_valid_guess(guess):
                 valid_guess = True
             else:
-                print('Invalid answer. Guess again.')
+                print('Invalid guess. Guess again.')
         if Check_answer(guess):
             win = True
         else:
