@@ -13,11 +13,6 @@ with open('wordle-answers-alphabetical.txt') as file:
         word_list.append(line)
 file.close()
 
-answer = random.choice(word_list)
-in_word = []
-not_in_word = []
-correct_letter = ['_','_','_','_','_']
-
 def Check_answer(x):
     return x == answer
 
@@ -42,27 +37,37 @@ def Check_duplicate_letters(x):
 def Check_valid_guess(x):
     return x in word_list
 
-win = False
-guess_count = 1
-while guess_count <= 6 and win == False:
-    valid_guess = False
-    while valid_guess == False:
-        guess = input('Enter guess #'+ str(guess_count) + ' >> ')
-        if Check_valid_guess(guess):
-            valid_guess = True
+play_again = True
+while play_again == True:
+    answer = random.choice(word_list)
+    in_word = []
+    not_in_word = []
+    correct_letter = ['_','_','_','_','_']
+    win = False
+    guess_count = 1
+    while guess_count <= 6 and win == False:
+        valid_guess = False
+        while valid_guess == False:
+            guess = input('Enter guess #'+ str(guess_count) + ' >> ')
+            guess = guess.lower()
+            if Check_valid_guess(guess):
+                valid_guess = True
+            else:
+                print('Invalid answer. Guess again.')
+        if Check_answer(guess):
+            win = True
         else:
-            print('Invalid answer. Guess again.')
-    if Check_answer(guess):
-        win = True
+            Check_correct_positions(guess)
+            in_word = Check_duplicate_letters(in_word)
+            not_in_word = Check_duplicate_letters(not_in_word)
+            print('Correct letters so far:' + str(correct_letter))
+            print('Letters in word:' + str(in_word))
+            print('Letters not in word:' + str(not_in_word))
+        guess_count += 1
+    if win == True:
+        print ('You win. Answer was ' + answer + '.')
     else:
-        Check_correct_positions(guess)
-        in_word = Check_duplicate_letters(in_word)
-        not_in_word = Check_duplicate_letters(not_in_word)
-        print('Correct letters so far:' + str(correct_letter))
-        print('Letters in word:' + str(in_word))
-        print('Letters not in word:' + str(not_in_word))
-    guess_count += 1
-if win == True:
-    print ('You win. Answer was ' + answer + '.')
-else:
-    print ('You lose. Answer was ' + answer + '.')
+        print ('You lose. Answer was ' + answer + '.')
+    play_again_answer = input('Play again? >> ')
+    if play_again_answer.lower() != 'y' and play_again_answer.lower() != 'yes':
+        play_again = False
