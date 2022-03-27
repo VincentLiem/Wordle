@@ -32,6 +32,7 @@ def Check_duplicate_letters(x):
     for letter in x:
             if letter not in check_dup:
                 check_dup.append(letter)
+                check_dup.sort()
     return check_dup
 
 def Check_valid_guess(x):
