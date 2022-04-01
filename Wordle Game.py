@@ -40,6 +40,7 @@ def Check_valid_guess(x):
 
 def Format_list(x):
     return str(x).replace("'",'').replace(',','').replace('[','').replace(']','')
+
 play_again = True
 while play_again == True:
     answer = random.choice(word_list)
