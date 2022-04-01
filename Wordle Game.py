@@ -45,7 +45,6 @@ def Format_list(x):
 
 play_again = True
 while play_again == True:
-
     in_word = []
     not_in_word = []
     correct_letter = ['_','_','_','_','_']
@@ -78,7 +77,6 @@ while play_again == True:
             print('Correct letters so far:' + Format_list(correct_letter))
             print('Letters in word: ' + Format_list(in_word))
             print('Letters not in word:' + Format_list(not_in_word))
-
         guess_count += 1
     if win == True:
         print ('You win. Answer was ' + answer + '.')
