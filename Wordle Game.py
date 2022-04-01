@@ -44,6 +44,7 @@ while play_again == True:
     in_word = []
     not_in_word = []
     correct_letter = ['_','_','_','_','_']
+    all_guesses = []
     win = False
     guess_count = 1
     while guess_count <= 6 and win == False:
@@ -61,9 +62,13 @@ while play_again == True:
             Check_correct_positions(guess)
             in_word = Check_duplicate_letters(in_word)
             not_in_word = Check_duplicate_letters(not_in_word)
-            print('Correct letters so far:' + str(correct_letter))
-            print('Letters in word:' + str(in_word))
-            print('Letters not in word:' + str(not_in_word))
+            all_guesses.append(guess)
+            print()
+            print('Guesses so far: '+ str(all_guesses).replace("'",'').replace(',',''))
+            print('Correct letters so far:' + str(correct_letter).replace("'",'').replace(',',''))
+            print('Letters in word:' + str(in_word).replace("'",'').replace(',',''))
+            print('Letters not in word:' + str(not_in_word).replace("'",'').replace(',',''))
+
         guess_count += 1
     if win == True:
         print ('You win. Answer was ' + answer + '.')
