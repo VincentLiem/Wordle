@@ -39,7 +39,7 @@ def Check_valid_guess(x):
     return str(x) in word_list
 
 def Format_list(x):
-    return str(x).replace("'",'').replace(',','')
+    return str(x).replace("'",'').replace(',','').replace('[','').replace(']','')
 play_again = True
 while play_again == True:
     answer = random.choice(word_list)
@@ -68,7 +68,7 @@ while play_again == True:
             print()
             print('Guesses so far: '+ Format_list(all_guesses))
             print('Correct letters so far:' + Format_list(correct_letter))
-            print('Letters in word:' + Format_list(in_word))
+            print('Letters in word: ' + Format_list(in_word))
             print('Letters not in word:' + Format_list(not_in_word))
 
         guess_count += 1
