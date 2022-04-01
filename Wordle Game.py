@@ -1,6 +1,7 @@
 import random
 
 word_list = []
+word_list_easy = []
 
 with open('wordle-allowed-guesses.txt') as file:
     for line in file:
@@ -11,6 +12,7 @@ with open('wordle-answers-alphabetical.txt') as file:
     for line in file:
         line = line.replace('\n', '')
         word_list.append(line)
+        word_list_easy.append(line)
 file.close()
 
 def Check_answer(x):
@@ -43,13 +45,18 @@ def Format_list(x):
 
 play_again = True
 while play_again == True:
-    answer = random.choice(word_list)
+
     in_word = []
     not_in_word = []
     correct_letter = ['_','_','_','_','_']
     all_guesses = []
     win = False
     guess_count = 1
+    easy_mode = input('Turn on easy mode? >> ')
+    if easy_mode.lower() == 'y' or easy_mode.lower() == 'yes':
+        answer = random.choice(word_list_easy)
+    else:
+        answer = random.choice(word_list)
     while guess_count <= 6 and win == False:
         valid_guess = False
         while valid_guess == False:
