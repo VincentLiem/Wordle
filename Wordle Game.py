@@ -36,8 +36,10 @@ def Check_duplicate_letters(x):
     return check_dup
 
 def Check_valid_guess(x):
-    return x in word_list
+    return str(x) in word_list
 
+def Format_list(x):
+    return str(x).replace("'",'').replace(',','')
 play_again = True
 while play_again == True:
     answer = random.choice(word_list)
@@ -64,10 +66,10 @@ while play_again == True:
             not_in_word = Check_duplicate_letters(not_in_word)
             all_guesses.append(guess)
             print()
-            print('Guesses so far: '+ str(all_guesses).replace("'",'').replace(',',''))
-            print('Correct letters so far:' + str(correct_letter).replace("'",'').replace(',',''))
-            print('Letters in word:' + str(in_word).replace("'",'').replace(',',''))
-            print('Letters not in word:' + str(not_in_word).replace("'",'').replace(',',''))
+            print('Guesses so far: '+ Format_list(all_guesses))
+            print('Correct letters so far:' + Format_list(correct_letter))
+            print('Letters in word:' + Format_list(in_word))
+            print('Letters not in word:' + Format_list(not_in_word))
 
         guess_count += 1
     if win == True:
