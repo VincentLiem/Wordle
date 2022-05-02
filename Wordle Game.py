@@ -56,6 +56,7 @@ while play_again == True:
         answer = random.choice(word_list_easy)
     else:
         answer = random.choice(word_list)
+    print()
     while guess_count <= 6 and win == False:
         valid_guess = False
         while valid_guess == False:
@@ -82,6 +83,7 @@ while play_again == True:
         print ('You win. Answer was ' + answer + '.')
     else:
         print ('You lose. Answer was ' + answer + '.')
+    print()
     play_again_answer = input('Play again? >> ')
     if play_again_answer.lower() != 'y' and play_again_answer.lower() != 'yes':
         play_again = False
